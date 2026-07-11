@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-coordinador
+    environment:
+      MYSQL_ROOT_PASSWORD: War034272@@@
+      MYSQL_DATABASE: coordinador_eventos
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pWar034272@@@"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: app-coordinador
+    ports:
+      - "3001:3001"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - PORT=3001
+      - JWT_SECRET=${JWT_SECRET}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - DB_HOST=mysql                # nombre del servicio de base de datos
+      - DB_USER=root
+      - DB_PASSWORD=War034272@@@
+      - DB_NAME=coordinador_eventos
+      - DB_PORT=3306                 # puerto interno del contenedor MySQL
+    volumes:
+      - .:/app                       # monta el código para desarrollo (opcional)
+      - /app/node_modules            # evita sobrescribir node_modules
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
