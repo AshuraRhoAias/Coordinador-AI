@@ -17,6 +17,14 @@ Coordinador-AI/
 
 > **Nota:** la carpeta `cordinadoreventos_ia/` está presente en el repositorio pero aún no contiene código; es el espacio previsto para el cliente/frontend de la aplicación.
 
+## **Login**
+
+![Login](https://github.com/AshuraRhoAias/Coordinador-AI/blob/main/Login.png?raw=true)
+
+## **Dashboard**
+
+![Dashboard](Dashboard.png)
+
 ## Características
 
 - **Autenticación** de usuarios con JWT y contraseñas hasheadas con `bcrypt`.
