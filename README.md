@@ -2,6 +2,13 @@
 
 Backend REST para un **Coordinador Operativo de Eventos** potenciado por IA. Expone una API en Node.js/Express que gestiona usuarios, chats/conversaciones, mensajes, eventos y participantes, integrando la API de Anthropic (Claude) como asistente conversacional.
 
+## Capturas de pantalla
+
+<p align="center">
+  <img src="Login.png" alt="Pantalla de inicio de sesión" width="45%">
+  <img src="Dashboard.png" alt="Panel principal (dashboard)" width="45%">
+</p>
+
 ## Estructura del repositorio
 
 ```
